@@ -1,4 +1,4 @@
-export let symbol = "!@#$%^&*()>?/";
+export let SM = "!@#$%^&*()>?/";
 export let UP = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-export let SC = "abcdefghijklmnopqrstuvwxyz";
-export let num = "0123456789";
+export let LR = "abcdefghijklmnopqrstuvwxyz";
+export let NM = "0123456789";

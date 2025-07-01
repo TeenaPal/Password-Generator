@@ -1,12 +1,30 @@
 import React, { useState } from 'react'
+import { LR, NM, SM, UP } from './data/password_value';
 
 function App() {
  let [uppercase,setuppercase] = useState(false);
   let [lowercase,setlowercase] = useState(false);
    let [num,setnum] = useState(false);
     let [symbol,setsymbol] = useState(false);
+let[passlen,setPasslen] = useState(10)
+    let createPassword = ()=>{
+let charSet = '';
+      if(uppercase||lowercase||num||symbol){
+        if (uppercase) charSet+=UP;
+        if (lowercase) charSet+=LR;
+        if(num) charSet+=NM;
+        if(symbol) charSet+=SM
+        
+console.log(charSet)
+
+      }
+      else{
+        alert("⚠️Please Select atleast one checkbox")
+      }
+    }
   return (
     <div className="container-fluid">
+     
  <div className="elem_container">
  <div> <h2>Password Generator</h2></div>
   <div className="content_container">
@@ -20,7 +38,7 @@ function App() {
   </div>
    <div className="pass_length">
 <label>Password Length</label>
-<input type="number"  className='num_length'/>
+<input type="number"  className='num_length' max={20} min={8} value={passlen} onChange={(e)=>setPasslen(e.target.value)}/>
   </div>
   
   <div className="pass_length">
@@ -44,7 +62,8 @@ function App() {
   </div>
 
  <div className="generate-button">
-  <button>Generate Password</button>
+  <button onClick={createPassword}>Generate Password</button>
+   
  </div>
  </div>
 

@@ -7,20 +7,36 @@ function App() {
    let [num,setnum] = useState(false);
     let [symbol,setsymbol] = useState(false);
 let[passlen,setPasslen] = useState(10)
+let[password,setpassword] = useState('');
+
+
     let createPassword = ()=>{
 let charSet = '';
+let finalPass = '';
       if(uppercase||lowercase||num||symbol){
         if (uppercase) charSet+=UP;
         if (lowercase) charSet+=LR;
         if(num) charSet+=NM;
         if(symbol) charSet+=SM
-        
-console.log(charSet)
+for(let i=0;i<passlen;i++){
+ finalPass += charSet.charAt(Math.floor(Math.random()*charSet.length))
+ setpassword(finalPass)
+ 
+}
+console.log(finalPass)
+
+
+ 
+
 
       }
       else{
         alert("⚠️Please Select atleast one checkbox")
       }
+    }
+    let copyPass =()=>{
+      navigator.clipboard.writeText(password)
+      alert("password copied...!")
     }
   return (
     <div className="container-fluid">
@@ -29,8 +45,8 @@ console.log(charSet)
  <div> <h2>Password Generator</h2></div>
   <div className="content_container">
     <div className='btn-container'>
-    <input type="text" readOnly />
-<button>Copy</button>
+    <input type="text" readOnly value={password} />
+<button onClick={copyPass}>Copy</button>
   </div>
 
  
